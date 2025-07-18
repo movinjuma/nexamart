@@ -1,9 +1,5 @@
 <template>
   <div class="chat-room">
-    <div class="chat-header">
-      <h2>{{ chatTitle }}</h2>
-    </div>
-
     <div ref="chatBodyRef" class="chat-body">
       <div v-if="state.isLoading" class="loading">Loading messages...</div>
       <div v-else-if="state.error" class="error">{{ state.error }}</div>
@@ -44,13 +40,6 @@
   flex-direction: column;
   height: 100vh;
   background-color: #f5f5f5;
-}
-
-.chat-header {
-  padding: 1rem;
-  background-color: #075e54;
-  color: white;
-  text-align: center;
 }
 
 .chat-body {
@@ -212,9 +201,11 @@ async function initializeChat() {
 // Fetch messages from the chatroom
 async function fetchMessages() {
   try {
-    // In your structure, messages are stored in the chatroom document's messages array
-    if (state.chatRoom && state.chatRoom.messages) {
-      state.messages = state.chatRoom.messages;
+    if (state.chatRoom?.messages) {
+      state.messages = state.chatRoom.messages.map(msg => ({
+        ...msg,
+        content: String(msg.content) // Ensure content is always a string
+      }));
     }
   } catch (err) {
     state.error = 'Failed to fetch messages: ' + err.message;
@@ -223,18 +214,22 @@ async function fetchMessages() {
 
 // Send a message
 async function sendMessage() {
-  if (!state.newMessage.trim()) return;
+  if (!state.newMessage.trim() || state.newMessage.length > 1000) {
+    state.error = 'Message must be between 1-1000 characters';
+    return;
+  }
   
   const msgContent = state.newMessage.trim();
   state.newMessage = '';
   state.isSending = true;
+  state.error = null;
 
   try {
-    // Create a new message object
+    // Create a new message object with validated content
     const newMsg = {
       $id: ID.unique(),
       sender_id: state.userId,
-      content: msgContent,
+      content: String(msgContent).substring(0, 1000), // Ensure string and limit length
       is_read: false,
       $createdAt: new Date().toISOString()
     };
@@ -249,7 +244,6 @@ async function sendMessage() {
       }
     );
 
-    // The realtime update will handle adding the message to the state
   } catch (err) {
     state.error = 'Failed to send message: ' + err.message;
     console.error(err);
@@ -269,9 +263,12 @@ function setupRealtime() {
     `databases.${DATABASE_ID}.collections.${COLLECTION_IDS.CHATS}.documents`,
     (res) => {
       if (res.payload.$id === state.chatId && res.events.includes('databases.*.collections.*.documents.*.update')) {
-        // Update the chatroom and messages when the document changes
+        // Ensure all message contents are strings
         state.chatRoom = res.payload;
-        state.messages = res.payload.messages || [];
+        state.messages = (res.payload.messages || []).map(msg => ({
+          ...msg,
+          content: String(msg.content)
+        }));
       }
     }
   );

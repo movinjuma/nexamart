@@ -1236,7 +1236,6 @@ const handleDrop = (e, fileType) => {
   const input = document.createElement('input');
   input.type = 'file';
   
-  // Set appropriate accept attributes based on file type
   switch(fileType) {
     case 'image':
       input.accept = 'image/jpeg,image/png,image/webp';
@@ -1299,6 +1298,7 @@ const resizeTextarea = (e) => {
   e.target.style.height = 'auto';
   e.target.style.height = (e.target.scrollHeight) + 'px';
 };
+
 const getIPAddress = async () => {
   try {
     const res = await fetch('https://api.ipify.org?format=json');
@@ -1308,6 +1308,23 @@ const getIPAddress = async () => {
   } catch (error) {
     console.warn('Failed to fetch IP address', error);
     return null;
+  }
+};
+
+const getApproximateLocation = async () => {
+  try {
+    const response = await fetch(`https://ipapi.co/${ipAddress.value || ''}/json/`);
+    if (!response.ok) throw new Error('IP lookup failed');
+    const data = await response.json();
+    latitude.value = data.latitude;
+    longitude.value = data.longitude;
+    if (data.country_code && !country.value) {
+      const countries = await db.listDocuments(DATABASE_ID, COLLECTION_IDS.COUNTRIES);
+      const matchedCountry = countries.documents.find(c => c.code === data.country_code);
+      if (matchedCountry) country.value = matchedCountry;
+    }
+  } catch (ipError) {
+    console.warn('Approximate location failed', ipError);
   }
 };
 
@@ -1418,29 +1435,47 @@ const handleRoomImagesUpload = async (e) => {
 
 const uploadAllFiles = async () => {
   const fileUrls = {};
+  const uploadPromises = [];
 
   try {
     if (imageFile.value) {
-      const thumbnail = await storage.createFile(COLLECTION_IDS.BUCKET, ID.unique(), imageFile.value);
-      fileUrls.thumbnail_url = getFileUrlFromResponse(thumbnail);
+      uploadPromises.push(
+        storage.createFile(COLLECTION_IDS.BUCKET, ID.unique(), imageFile.value)
+          .then(thumbnail => {
+            fileUrls.thumbnail_url = getFileUrlFromResponse(thumbnail);
+          })
+      );
     }
 
     if (videoFile.value) {
-      const video = await storage.createFile(COLLECTION_IDS.BUCKET, ID.unique(), videoFile.value);
-      fileUrls.video_url = getFileUrlFromResponse(video);
+      uploadPromises.push(
+        storage.createFile(COLLECTION_IDS.BUCKET, ID.unique(), videoFile.value)
+          .then(video => {
+            fileUrls.video_url = getFileUrlFromResponse(video);
+          })
+      );
     }
 
     if (roomImages.value.length) {
-      const uploads = await Promise.all(roomImages.value.map(f =>
-        storage.createFile(COLLECTION_IDS.BUCKET, ID.unique(), f)
-      ));
-      fileUrls.room_image_urls = uploads.map(getFileUrlFromResponse);
+      uploadPromises.push(
+        Promise.all(roomImages.value.map(f =>
+          storage.createFile(COLLECTION_IDS.BUCKET, ID.unique(), f)
+        ).then(uploads => {
+          fileUrls.room_image_urls = uploads.map(getFileUrlFromResponse);
+        })
+      );
     }
+
+    await Promise.race([
+      Promise.all(uploadPromises),
+      new Promise((_, reject) => 
+        setTimeout(() => reject(new Error('File upload timeout')), 30000)
+    ]);
 
     return fileUrls;
   } catch (error) {
     console.error('File upload error:', error);
-    throw new Error('Failed to upload files');
+    throw new Error('Failed to upload files: ' + error.message);
   }
 };
 
@@ -1589,33 +1624,28 @@ const confirmLocation = async (isAtProperty) => {
     userConfirmedLocation.value = isAtProperty;
     
     if (isAtProperty) {
-      // Try to get precise location if user is at property
-      const position = await new Promise((resolve, reject) => {
-        navigator.geolocation.getCurrentPosition(resolve, reject, {
-          enableHighAccuracy: true,
-          timeout: 5000,
-          maximumAge: 0
-        });
-      });
-      
-      latitude.value = position.coords.latitude;
-      longitude.value = position.coords.longitude;
-    } else {
-      // Use approximate location based on IP if user isn't at property
       try {
-        const response = await fetch(`https://ipapi.co/${ipAddress.value || ''}/json/`);
-        const data = await response.json();
-        latitude.value = data.latitude;
-        longitude.value = data.longitude;
-      } catch (ipError) {
-        console.warn('Could not get approximate location', ipError);
+        const position = await new Promise((resolve, reject) => {
+          navigator.geolocation.getCurrentPosition(resolve, reject, {
+            enableHighAccuracy: true,
+            timeout: 5000,
+            maximumAge: 0
+          });
+        });
+        
+        latitude.value = position.coords.latitude;
+        longitude.value = position.coords.longitude;
+      } catch (geoError) {
+        console.warn('Precise location failed, falling back to IP', geoError);
+        await getApproximateLocation();
       }
+    } else {
+      await getApproximateLocation();
     }
     
     showLocationModal.value = false;
   } catch (error) {
     console.error('Location error:', error);
-    // Fallback - hide modal and continue without precise location
     showLocationModal.value = false;
   }
 };
@@ -1629,11 +1659,22 @@ const submitPropertyForm = async () => {
   isLoading.value = true;
   fullScreenLoading.value = true;
   submissionError.value = null;
+  const timeout = setTimeout(() => {
+    if (isLoading.value) {
+      submissionError.value = 'Processing took too long. Please try again.';
+      isLoading.value = false;
+      fullScreenLoading.value = false;
+    }
+  }, 60000);
 
   try {
+    console.log('Starting form submission');
     if (isFreeUpload.value) {
+      console.log('Processing free upload');
       const fileUrls = await uploadAllFiles();
+      console.log('Files uploaded:', fileUrls);
       const savedProperty = await savePropertyData(fileUrls);
+      console.log('Property saved:', savedProperty.$id);
       router.push({
         name: 'success',
         query: {
@@ -1642,12 +1683,14 @@ const submitPropertyForm = async () => {
         }
       });
     } else {
+      console.log('Initializing payment');
       await initializePayment();
     }
   } catch (err) {
     console.error('Form submission error:', err);
     submissionError.value = err.message || 'Failed to submit property listing';
   } finally {
+    clearTimeout(timeout);
     isLoading.value = false;
     fullScreenLoading.value = false;
   }
@@ -1667,7 +1710,6 @@ onMounted(() => {
 });
 
 onBeforeUnmount(() => {
-  // Clean up object URLs to prevent memory leaks
   if (currentThumbnail.value?.url) URL.revokeObjectURL(currentThumbnail.value.url);
   if (currentVideo.value?.url) URL.revokeObjectURL(currentVideo.value.url);
   currentRoomImages.value.forEach(img => {

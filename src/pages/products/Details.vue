@@ -160,315 +160,150 @@
   </div>
 </template>
 <style scoped>
+/* AliExpress Inspired Design System */
 :root {
-  --primary: #2563eb;
-  --primary-hover: #1d4ed8;
-  --secondary: #3b82f6;
-  --accent: #f59e0b;
-  --text: #1f2937;
-  --text-light: #6b7280;
-  --bg: #f9fafb;
-  --card-bg: #ffffff;
-  --border-radius: 12px;
-  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --primary: #FF6A00; /* AliExpress orange */
+  --primary-hover: #E55C00;
+  --secondary: #FF9000;
+  --accent: #FF6A00;
+  --text: #333333;
+  --text-light: #666666;
+  --bg: #FFFFFF;
+  --card-bg: #FFFFFF;
+  --border-radius: 4px; /* AliExpress uses smaller radius */
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
+  --shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
-.loading, .error {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 60vh;
-  padding: 2rem;
-  text-align: center;
-}
-
-.loading-spinner {
-  border: 4px solid rgba(0, 0, 0, 0.1);
-  border-radius: 50%;
-  border-top: 4px solid var(--primary);
-  width: 40px;
-  height: 40px;
-  animation: spin 1s linear infinite;
-  margin-bottom: 1rem;
-}
-
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-.error svg {
-  color: #ef4444;
-  margin-bottom: 1rem;
-}
-
-.error h3 {
-  font-size: 1.25rem;
-  color: var(--text);
-  margin-bottom: 1.5rem;
-}
-
-.back-button {
-  background-color: var(--primary);
-  color: white;
-  border: none;
-  padding: 0.75rem 1.5rem;
-  border-radius: var(--border-radius);
-  font-weight: 600;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
-}
-
-.back-button:hover {
-  background-color: var(--primary-hover);
-}
-
+/* Base Layout */
 .property-details {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 1rem;
+  padding: 0;
   color: var(--text);
 }
 
+/* Header - Compact for child page */
 .header {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 1rem 0;
-  position: sticky;
-  top: 0;
+  padding: 5px 8px;
   background: var(--bg);
-  z-index: 10;
+  border-bottom: 1px solid #f0f0f0;
 }
 
 .header h2 {
-  font-size: 1.25rem;
+  font-size: 18px;
   font-weight: 600;
-  margin: 0;
-  flex-grow: 1;
-  text-align: center;
+  margin: 0 auto;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  padding: 0 1rem;
+  max-width: 70%;
 }
 
-.icon-button {
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  transition: all 0.2s ease;
-  color: var(--text);
-}
-
-.icon-button:hover {
-  background-color: rgba(0, 0, 0, 0.05);
-  color: var(--primary);
-}
-
-.icon-button:active {
-  transform: scale(0.95);
-}
-
+/* Media Container - YouTube-like video sizing */
 .media-container {
-  margin: 0.5rem 0;
-  border-radius: var(--border-radius);
-  overflow: hidden;
-  box-shadow: var(--shadow);
+  margin: 0;
+  width: 100%;
+  background: #000;
 }
 
 .property-video {
   width: 100%;
-  height: 0;
-  padding-bottom: 56.25%; /* 16:9 aspect ratio */
-  position: relative;
+  height: 210px; /* Slightly taller than mobile YouTube */
   background: #000;
 }
 
 .property-video video {
-  position: absolute;
-  top: 0;
-  left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
 }
 
+/* Image Gallery - Compact and functional */
 .image-gallery {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
+  width: 100%;
 }
 
 .main-image {
   width: 100%;
-  height: 0;
-  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  height: 210px;
   object-fit: cover;
-  border-radius: var(--border-radius);
-  background: #f3f4f6;
-  position: relative;
-}
-
-.main-image img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  background: #f5f5f5;
 }
 
 .thumbnails {
   display: flex;
-  gap: 0.75rem;
+  gap: 8px;
+  padding: 8px;
   overflow-x: auto;
-  padding-bottom: 0.5rem;
-  scrollbar-width: thin;
-  scrollbar-color: var(--primary) transparent;
-}
-
-.thumbnails::-webkit-scrollbar {
-  height: 4px;
-}
-
-.thumbnails::-webkit-scrollbar-thumb {
-  background-color: var(--primary);
-  border-radius: 2px;
 }
 
 .thumbnails img {
-  width: 80px;
-  height: 60px;
+  width: 60px;
+  height: 45px;
   object-fit: cover;
-  border-radius: 8px;
-  cursor: pointer;
-  border: 2px solid transparent;
-  transition: all 0.2s ease;
-  flex-shrink: 0;
+  border-radius: 2px;
+  border: 1px solid #eee;
 }
 
-.thumbnails img:hover {
-  transform: scale(1.05);
-}
-
-.thumbnails img.active {
-  border-color: var(--accent);
-  box-shadow: 0 2px 8px rgba(245, 158, 11, 0.3);
-}
-
+/* Info Section - Compact layout */
 .info-section {
-  display: grid;
-  gap: 1.5rem;
-  margin: 1.5rem 0;
-}
-
-.info, .contact-info {
-  background: var(--card-bg);
-  padding: 1.25rem;
-  border-radius: var(--border-radius);
-  box-shadow: var(--shadow-sm);
-}
-
-.contact-info {
-  align-self: start;
-  position: sticky;
-  top: 80px;
+  padding: 12px;
 }
 
 .info-item, .contact-item {
   display: flex;
-  gap: 1rem;
-  align-items: flex-start;
-  margin-bottom: 1.25rem;
-}
-
-.info-item:last-child, .contact-item:last-child {
-  margin-bottom: 0;
+  gap: 8px;
+  margin-bottom: 12px;
+  align-items: center;
 }
 
 .info-item svg, .contact-item svg {
   flex-shrink: 0;
   color: var(--accent);
-  margin-top: 0.25rem;
-}
-
-.info-item h3 {
-  margin: 0 0 0.25rem 0;
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: var(--text);
-}
-
-.info-item p, .contact-item p {
-  margin: 0;
-  font-size: 0.95rem;
-  line-height: 1.5;
-  color: var(--text-light);
 }
 
 .price {
+  font-size: 18px;
   font-weight: bold;
-  font-size: 1.25rem;
   color: var(--primary);
-  margin: 0.15rem 0;
 }
 
-.posted-date {
-  font-size: 0.85rem;
-  color: var(--text-light);
-}
-
-.contact-info h4 {
-  margin-top: 0;
-  margin-bottom: 1.25rem;
-  font-size: 1.1rem;
-  color: var(--text);
-  font-weight: 600;
-  padding-bottom: 0.5rem;
-  border-bottom: 1px solid #e5e7eb;
-}
-
+/* AliExpress-style action buttons */
 .actions {
   display: flex;
-  gap: 1rem;
-  margin: 2rem 0;
-  flex-wrap: wrap;
+  gap: 8px;
+  padding: 12px;
+  position: sticky;
+  bottom: 0;
+  background: var(--bg);
+  border-top: 1px solid #f0f0f0;
 }
 
 .actions button {
-  padding: 0.875rem 1.25rem;
+  flex: 1;
+  padding: 12px;
   border: none;
   border-radius: var(--border-radius);
-  cursor: pointer;
   font-weight: 600;
-  font-size: 0.95rem;
-  flex: 1;
-  min-width: 120px;
-  transition: all 0.2s ease;
+  font-size: 14px;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
+  gap: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
 }
 
 .msg {
-  background: #e0f2fe;
-  color: #0369a1;
+  background: #f5f5f5;
+  color: var(--text);
 }
 
 .msg:hover {
-  background: #bae6fd;
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-sm);
+  background: #eee;
 }
 
 .cta {
@@ -478,23 +313,17 @@
 
 .cta:hover {
   background: var(--primary-hover);
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-sm);
 }
 
-.related h4 {
-  margin-bottom: 1.5rem;
-  font-size: 1.25rem;
-  color: var(--text);
-  font-weight: 600;
-  padding-bottom: 0.5rem;
-  border-bottom: 1px solid #e5e7eb;
+/* Related Properties - Compact grid */
+.related {
+  padding: 12px;
 }
 
 .property-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
 }
 
 .card {
@@ -502,104 +331,100 @@
   border-radius: var(--border-radius);
   overflow: hidden;
   box-shadow: var(--shadow-sm);
-  transition: all 0.3s ease;
-  display: flex;
-  flex-direction: column;
-  cursor: pointer;
-}
-
-.card:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--shadow);
 }
 
 .card-image-wrapper {
   width: 100%;
-  height: 0;
-  padding-bottom: 66.66%; /* 3:2 aspect ratio */
-  position: relative;
-  overflow: hidden;
+  height: 120px;
 }
 
 .card-image-wrapper img {
-  position: absolute;
-  top: 0;
-  left: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.3s ease;
-}
-
-.card:hover .card-image-wrapper img {
-  transform: scale(1.05);
 }
 
 .card-info {
-  padding: 1rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  flex-grow: 1;
-}
-
-.property-location {
-  font-size: 0.9rem;
-  color: var(--text-light);
-  margin: 0;
-  display: flex;
-  align-items: center;
-  gap: 0.3rem;
+  padding: 8px;
 }
 
 .property-price {
-  font-size: 1.1rem;
-  font-weight: bold;
+  font-size: 14px;
   color: var(--primary);
-  margin: 0.25rem 0;
+  font-weight: bold;
+  margin: 4px 0;
 }
 
-.posted-date {
-  font-size: 0.8rem;
-  color: var(--text-light);
-  margin: 0;
-}
-
-@media (min-width: 768px) {
-  .property-details {
-    padding: 0 1.5rem;
+/* Responsive Adjustments */
+@media (min-width: 640px) {
+  .property-video,
+  .main-image {
+    height: 360px;
   }
   
-  .header {
-    padding: 1rem 0;
-    position: static;
-    background: transparent;
-  }
-  
-  .header h2 {
-    font-size: 1.5rem;
-    padding: 0;
-  }
-  
-  .info-section {
-    grid-template-columns: 2fr 1fr;
-  }
-  
-  .property-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (min-width: 1024px) {
   .property-grid {
     grid-template-columns: repeat(3, 1fr);
   }
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 1024px) {
+  .media-container {
+    border-radius: var(--border-radius);
+    overflow: hidden;
+  }
+  
+  .info-section {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 16px;
+    padding: 16px;
+  }
+  
   .property-grid {
     grid-template-columns: repeat(4, 1fr);
   }
+  
+  .actions {
+    position: static;
+    border-top: none;
+    padding: 16px;
+  }
+}
+
+/* Loading and Error States */
+.loading, .error {
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.loading-spinner {
+  border: 3px solid rgba(0,0,0,0.1);
+  border-top-color: var(--primary);
+  width: 30px;
+  height: 30px;
+  margin: 0 auto 16px;
+  animation: spin 1s linear infinite;
+  border-radius: 50%;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.error svg {
+  width: 40px;
+  height: 40px;
+  color: #ff4d4f;
+  margin-bottom: 12px;
+}
+
+.back-button {
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: var(--border-radius);
+  margin-top: 12px;
 }
 </style>
 <script setup>

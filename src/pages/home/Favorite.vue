@@ -11,7 +11,7 @@
         v-for="property in favorites"
         :key="property.$id"
         class="property-card"
-        @click="goToDetails(property.$id)"
+        @click="goToDetails(property)"
       >
         <img :src="property.thumbnail_url || banner" alt="property" />
         <div class="property-info">
@@ -26,6 +26,7 @@
   </div>
 </template>
 <style scoped>
+/* Your existing styles remain unchanged */
 .favorites-page {
   padding: 1rem;
   max-width: 1200px;
@@ -43,6 +44,11 @@
   box-shadow: 0 0 5px rgba(0,0,0,0.1);
   cursor: pointer;
   transition: transform 0.2s;
+}
+.favorites-page {
+  padding: 0.5rem;
+  max-width: 1200px;
+  margin: auto;
 }
 .property-card:hover {
   transform: scale(1.02);
@@ -105,22 +111,10 @@ const router = useRouter();
 const loading = ref(true);
 const favorites = ref([]);
 
-// Utility to split array into chunks (e.g., for batching queries)
-const chunkArray = (arr, size) => {
-  const result = [];
-  for (let i = 0; i < arr.length; i += size) {
-    result.push(arr.slice(i, i + size));
-  }
-  return result;
-};
-
-// Fetch favorites from user's profile
 const fetchFavorites = async () => {
   loading.value = true;
   try {
     const user = await account.get();
-
-    // Get user document
     const res = await db.listDocuments(DATABASE_ID, COLLECTION_IDS.USERS, [
       Query.equal('user_id', user.$id)
     ]);
@@ -135,46 +129,30 @@ const fetchFavorites = async () => {
       return;
     }
 
-    // Fetch property documents in chunks
-    const propertyChunks = chunkArray(favoriteIds, 10);
-    const allResults = await Promise.all(
-      propertyChunks.map(ids =>
-        db.listDocuments(DATABASE_ID, COLLECTION_IDS.PROPERTIES, [
-          Query.equal('$id', ids)
-        ])
-      )
+    const propertiesRes = await db.listDocuments(
+      DATABASE_ID, 
+      COLLECTION_IDS.PROPERTIES,
+      [Query.equal('$id', favoriteIds)]
     );
 
-    // Flatten and format property data
-    favorites.value = allResults.flatMap(r =>
-      r.documents.map(property => ({
-        $id: property.$id,
-        property_name: property.property_name,
-        category: property.category,
-        location: property.location,
-        exact_location: property.exact_location,
-        country: property.country,
-        thumbnail_url: property.thumbnail_url,
-        currency: property.currency || 'KES',
-        amount: property.amount,
-        period: property.period,
-        status: property.status || 'active',
-        created_at: property.created_at
-      }))
-    );
+    favorites.value = propertiesRes.documents.map(property => ({
+      ...property,
+      currency: property.currency || 'KES',
+      status: property.status || 'active'
+    }));
 
   } catch (err) {
-    console.error('Failed to fetch favorites:', err.message);
+    console.error('Failed to fetch favorites:', err);
     favorites.value = [];
   } finally {
     loading.value = false;
   }
 };
 
-// Navigate to property details page and pass propertyName as query
 const goToDetails = (property) => {
   router.push({
-    path: `/details/${property.$id}`,
+    name: 'details', // Using named route
+    params: { id: property.$id },
     query: {
       propertyName: property.property_name
     }

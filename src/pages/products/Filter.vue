@@ -64,6 +64,7 @@
     </div>
   </div>
 </template>
+
 <style scoped>
 .filter-page {
   padding: 0.3rem;
@@ -181,51 +182,38 @@
 }
 .card-image-wrapper {
   width: 100%;
-  height: auto;
+  height: 150px; /* Reduced image height */
   overflow: hidden;
 }
 .card-image-wrapper img {
   width: 100%;
-  height: auto;
+  height: 100%;
   object-fit: cover;
 }
 .card-info {
-  padding: 0.3rem;
+  padding: 0.8rem;
   display: flex;
   flex-direction: column;
   gap: 0.4rem;
 }
-.property-name {
-  font-size: 1rem;
-  font-weight: 600;
-  color: #333;
-}
 .property-location {
   font-size: 0.85rem;
   color: #666;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .property-price {
   font-size: 1rem;
   font-weight: bold;
   color: #ff5400;
+  margin: 0;
 }
 .posted-date {
   font-size: 0.75rem;
   color: #888;
-}
-.view-button {
-  margin-top: 0.5rem;
-  padding: 0.45rem;
-  background-color: #ff5400;
-  color: white;
-  font-size: 0.9rem;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-.view-button:hover {
-  background-color: #e04a00;
+  margin: 0;
 }
 
 /* No Results & Loading */
@@ -249,6 +237,9 @@
   .category-title {
     font-size: 1.6rem;
   }
+  .card-image-wrapper {
+    height: 160px; /* Adjusted for tablet */
+  }
 }
 @media (min-width: 1024px) {
   .property-grid {
@@ -259,15 +250,16 @@
     font-size: 1.8rem;
   }
   .card-image-wrapper {
-    height: 190px;
+    height: 170px; /* Adjusted for desktop */
   }
 }
 </style>
+
 <script setup>
 import { ref, computed, onMounted, watch } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
 import { Query } from 'appwrite';
-import { db, DATABASE_ID, COLLECTION_IDS, endpoint, projectId } from './../../utils/appwrite.js';
+import { db, DATABASE_ID, COLLECTION_IDS } from './../../utils/appwrite.js';
 import searchIcon from './../../assets/gold icons/search.png';
 import back from './../../assets/gold icons/back2.png';
 import searchError from './../../assets/gold icons/serror.png';
@@ -348,18 +340,20 @@ const fetchProperties = async () => {
   try {
     const queries = [
       Query.equal('category', category.value),
-      Query.equal('status', 'active'), // Only fetch active properties
+      Query.equal('status', 'active'),
       Query.limit(100)
     ];
 
     if (searchQuery.value.trim()) {
-      const kws = searchQuery.value.trim().split(/\s+/).map(k=>`"${k}"`).join(' ');
-      queries.push(Query.or([
-        Query.search('property_name', kws),
-        Query.search('location', kws),
-        Query.search('exact_location', kws),
-        Query.search('description', kws)
-      ]));
+      queries.push(
+        Query.or([
+          Query.search('property_name', searchQuery.value.trim()),
+          Query.search('location', searchQuery.value.trim()),
+          Query.search('institution_name', searchQuery.value.trim()),
+          Query.search('exact_location', searchQuery.value.trim()),
+          Query.search('description', searchQuery.value.trim())
+        ])
+      );
     }
 
     if (activeFilter.value === 'Cheap') {
@@ -373,14 +367,18 @@ const fetchProperties = async () => {
     const res = await db.listDocuments(DATABASE_ID, COLLECTION_IDS.PROPERTIES, queries);
     let props = res.documents.map(doc => ({
       ...doc,
-      // Use thumbnail_url first, fall back to banner if not available
       thumbnail_url: doc.thumbnail_url || banner
     }));
 
     if (activeFilter.value === 'Near Me' && userLocation.value.latitude && userLocation.value.longitude) {
       props = props.filter(p => {
         if (typeof p.latitude === 'number' && typeof p.longitude === 'number') {
-          return haversineDistance(userLocation.value.latitude, userLocation.value.longitude, p.latitude, p.longitude) <= 50;
+          return haversineDistance(
+            userLocation.value.latitude, 
+            userLocation.value.longitude, 
+            p.latitude, 
+            p.longitude
+          ) <= 50;
         }
         return false;
       });
@@ -400,6 +398,7 @@ const debouncedSearch = () => {
   clearTimeout(debounceTimer);
   debounceTimer = setTimeout(fetchProperties, 300);
 };
+
 const goToDetails = (id) => {
   router.push({ name: 'details', params: { id } });
 };
