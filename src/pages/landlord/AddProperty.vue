@@ -1460,7 +1460,7 @@ const uploadAllFiles = async () => {
       uploadPromises.push(
         Promise.all(roomImages.value.map(f =>
           storage.createFile(COLLECTION_IDS.BUCKET, ID.unique(), f)
-        ).then(uploads => {
+        )).then(uploads => {
           fileUrls.room_image_urls = uploads.map(getFileUrlFromResponse);
         })
       );
@@ -1470,6 +1470,7 @@ const uploadAllFiles = async () => {
       Promise.all(uploadPromises),
       new Promise((_, reject) => 
         setTimeout(() => reject(new Error('File upload timeout')), 30000)
+      )
     ]);
 
     return fileUrls;
@@ -1478,7 +1479,6 @@ const uploadAllFiles = async () => {
     throw new Error('Failed to upload files: ' + error.message);
   }
 };
-
 const savePropertyData = async (fileUrls) => {
   try {
     const propertyDoc = await db.createDocument(
