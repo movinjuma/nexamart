@@ -281,7 +281,7 @@
 .property-image-container {
   position: relative;
   width: 100%;
-  aspect-ratio: 4/3;
+  aspect-ratio: 2/3;
 }
 
 .thumbnail_url {

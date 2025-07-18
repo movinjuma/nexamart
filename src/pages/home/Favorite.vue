@@ -13,7 +13,7 @@
         class="property-card"
         @click="goToDetails(property)"
       >
-        <img :src="property.thumbnail_url || banner" alt="property" />
+        <img :src="property.thumbnail_url" alt="property" />
         <div class="property-info">
           <h3>{{ property.property_name }}</h3>
           <p>{{ property.location }}</p>
