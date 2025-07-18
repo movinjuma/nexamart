@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- Core Pages -->
+  <url>
+    <loc>https://www.housika.co.ke/</loc>
+    <priority>1.00</priority>
+  </url>
+  <url>
+    <loc>https://www.housika.co.ke/addproperty</loc>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://www.housika.co.ke/signup</loc>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://www.housika.co.ke/login</loc>
+    <priority>0.70</priority>
+  </url>
+
+  <!-- Category Filter Pages -->
+  <url>
+    <loc>https://www.housika.co.ke/filter/Single%20Rooms</loc>
+    <priority>0.70</priority>
+  </url>
+  <url>
+    <loc>https://www.housika.co.ke/filter/Bedsitter%20Units</loc>
+    <priority>0.70</priority>
+  </url>
+  <url>
+    <loc>https://www.housika.co.ke/filter/Student%20Rooms</loc>
+    <priority>0.70</priority>
+  </url>
+  <url>
+    <loc>https://www.housika.co.ke/filter/One%20Bedrooms</loc>
+    <priority>0.70</priority>
+  </url>
+  <url>
+    <loc>https://www.housika.co.ke/filter/Two%20Bedrooms</loc>
+    <priority>0.70</priority>
+  </url>
+  <url>
+    <loc>https://www.housika.co.ke/filter/Three%20Bedrooms</loc>
+    <priority>0.70</priority>
+  </url>
+  <url>
+    <loc>https://www.housika.co.ke/filter/Lodging%20Rooms</loc>
+    <priority>0.70</priority>
+  </url>
+  <url>
+    <loc>https://www.housika.co.ke/filter/Hotel%20Rooms</loc>
+    <priority>0.70</priority>
+  </url>
+  <url>
+    <loc>https://www.housika.co.ke/filter/Business%20Spaces</loc>
+    <priority>0.70</priority>
+  </url>
+  <url>
+    <loc>https://www.housika.co.ke/filter/Office%20Spaces</loc>
+    <priority>0.70</priority>
+  </url>
+  <url>
+    <loc>https://www.housika.co.ke/filter/Plots%20Sale</loc>
+    <priority>0.70</priority>
+  </url>
+  <url>
+    <loc>https://www.housika.co.ke/filter/Farming%20Land</loc>
+    <priority>0.70</priority>
+  </url>
+
+</urlset>

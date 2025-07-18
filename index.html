@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en-KE">
+<head>
+  <!-- Required Meta Tags -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#007bff">
+
+  <!-- Dynamic Title (Will be updated by Vue) -->
+  <title>Housika | Kenya's Complete Property Platform - All 47 Counties</title>
+
+  <!-- Primary Meta Tags -->
+  <meta name="description" content="25,000+ verified properties across Kenya: Nairobi apartments (from KSh 500), Mombasa beach houses, rural farmland, student rooms & commercial spaces. Free legal docs + receipt generator.">
+  
+  <!-- Pre-rendered SEO Content (Hidden in app) -->
+  <meta name="seo:regions" content="Nairobi,Mombasa,Kisumu,Nakuru,Eldoret,Thika,Machakos,Kiambu,Nyeri,Meru,Kakamega,Kisii,Kericho,Bungoma,Uasin Gishu,Kilifi,Garissa,Lamu,Kitui,Kajiado,Narok,Makueni,Wajir,Marsabit,Isiolo,Nandi,Homa Bay,Migori,Siaya,Busia,Embu,Kirinyaga,Murang'a,Nyandarua,Nyamira,Samburu,Taita Taveta,Tana River,Trans Nzoia,Turkana,West Pokot,Baringo,Elgeyo-Marakwet,Laikipia,Nandi,Vihiga,Bomet">
+  <meta name="seo:categories" content="Single Room,Bedsitter,Student Housing,1 Bedroom,2 Bedroom,3 Bedroom,Vacation Rental,Farmhouse,Commercial Plot,Agricultural Land">
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://www.housika.co.ke/">
+
+  <!-- Favicon -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.housika.co.ke/">
+  <meta property="og:title" content="Housika | Properties in All Kenyan Counties - Urban & Rural">
+  <meta property="og:description" content="Find rentals & purchases across Kenya: Nairobi apartments, coastal homes, upcountry farmland, student rooms & business premises. Verified listings with photos/maps.">
+  <meta property="og:image" content="https://www.housika.co.ke/images/og-kenya-properties.webp">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Kenya's Most Complete Property Listings - Housika">
+  <meta name="twitter:description" content="Search 25K+ properties across all 47 Kenyan counties - from city studios to rural farmland. Direct landlord connections.">
+
+  <!-- Structured Data (Enhanced with Kenyan Locations & Institutions) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "name": "Housika",
+        "url": "https://www.housika.co.ke",
+        "applicationCategory": "RealEstateApplication",
+        "operatingSystem": "Web",
+        "description": "Kenya's property platform covering all regions",
+        "offers": {
+          "@type": "AggregateOffer",
+          "offerCount": "25000",
+          "lowPrice": "500",
+          "highPrice": "50000000",
+          "priceCurrency": "KES"
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Kenya",
+            "item": "https://www.housika.co.ke/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "All Counties",
+            "item": "https://www.housika.co.ke/counties"
+          }
+        ]
+      },
+      /* ========== 100+ TOWNS ACROSS 47 COUNTIES ========== */
+      {"@type": "City", "name": "Nairobi", "containedInPlace": {"@type": "AdministrativeArea", "name": "Nairobi County"}},
+      {"@type": "City", "name": "Mombasa", "containedInPlace": {"@type": "AdministrativeArea", "name": "Mombasa County"}},
+      {"@type": "City", "name": "Kisumu", "containedInPlace": {"@type": "AdministrativeArea", "name": "Kisumu County"}},
+      {"@type": "City", "name": "Nakuru", "containedInPlace": {"@type": "AdministrativeArea", "name": "Nakuru County"}},
+      {"@type": "City", "name": "Eldoret", "containedInPlace": {"@type": "AdministrativeArea", "name": "Uasin Gishu County"}},
+      {"@type": "City", "name": "Thika", "containedInPlace": {"@type": "AdministrativeArea", "name": "Kiambu County"}},
+      {"@type": "City", "name": "Kitale", "containedInPlace": {"@type": "AdministrativeArea", "name": "Trans Nzoia County"}},
+      {"@type": "City", "name": "Malindi", "containedInPlace": {"@type": "AdministrativeArea", "name": "Kilifi County"}},
+      {"@type": "City", "name": "Kakamega", "containedInPlace": {"@type": "AdministrativeArea", "name": "Kakamega County"}},
+      {"@type": "City", "name": "Meru", "containedInPlace": {"@type": "AdministrativeArea", "name": "Meru County"}},
+      {"@type": "City", "name": "Nyeri", "containedInPlace": {"@type": "AdministrativeArea", "name": "Nyeri County"}},
+      {"@type": "City", "name": "Machakos", "containedInPlace": {"@type": "AdministrativeArea", "name": "Machakos County"}},
+      {"@type": "City", "name": "Kericho", "containedInPlace": {"@type": "AdministrativeArea", "name": "Kericho County"}},
+      {"@type": "City", "name": "Embu", "containedInPlace": {"@type": "AdministrativeArea", "name": "Embu County"}},
+      {"@type": "City", "name": "Naivasha", "containedInPlace": {"@type": "AdministrativeArea", "name": "Nakuru County"}},
+      {"@type": "City", "name": "Nanyuki", "containedInPlace": {"@type": "AdministrativeArea", "name": "Laikipia County"}},
+      {"@type": "City", "name": "Garissa", "containedInPlace": {"@type": "AdministrativeArea", "name": "Garissa County"}},
+      {"@type": "City", "name": "Kisii", "containedInPlace": {"@type": "AdministrativeArea", "name": "Kisii County"}},
+      {"@type": "City", "name": "Bungoma", "containedInPlace": {"@type": "AdministrativeArea", "name": "Bungoma County"}},
+      {"@type": "City", "name": "Busia", "containedInPlace": {"@type": "AdministrativeArea", "name": "Busia County"}},
+      {"@type": "City", "name": "Homa Bay", "containedInPlace": {"@type": "AdministrativeArea", "name": "Homa Bay County"}},
+      {"@type": "City", "name": "Narok", "containedInPlace": {"@type": "AdministrativeArea", "name": "Narok County"}},
+      {"@type": "City", "name": "Nyamira", "containedInPlace": {"@type": "AdministrativeArea", "name": "Nyamira County"}},
+      {"@type": "City", "name": "Migori", "containedInPlace": {"@type": "AdministrativeArea", "name": "Migori County"}},
+      {"@type": "City", "name": "Lodwar", "containedInPlace": {"@type": "AdministrativeArea", "name": "Turkana County"}},
+      {"@type": "City", "name": "Kapenguria", "containedInPlace": {"@type": "AdministrativeArea", "name": "West Pokot County"}},
+      {"@type": "City", "name": "Kitui", "containedInPlace": {"@type": "AdministrativeArea", "name": "Kitui County"}},
+      {"@type": "City", "name": "Marsabit", "containedInPlace": {"@type": "AdministrativeArea", "name": "Marsabit County"}},
+      {"@type": "City", "name": "Voi", "containedInPlace": {"@type": "AdministrativeArea", "name": "Taita Taveta County"}},
+      {"@type": "City", "name": "Wajir", "containedInPlace": {"@type": "AdministrativeArea", "name": "Wajir County"}},
+      {"@type": "City", "name": "Mandera", "containedInPlace": {"@type": "AdministrativeArea", "name": "Mandera County"}},
+      {"@type": "City", "name": "Isiolo", "containedInPlace": {"@type": "AdministrativeArea", "name": "Isiolo County"}},
+      {"@type": "City", "name": "Lamu", "containedInPlace": {"@type": "AdministrativeArea", "name": "Lamu County"}},
+      {"@type": "City", "name": "Ruiru", "containedInPlace": {"@type": "AdministrativeArea", "name": "Kiambu County"}},
+      {"@type": "City", "name": "Karuri", "containedInPlace": {"@type": "AdministrativeArea", "name": "Kiambu County"}},
+      {"@type": "City", "name": "Limuru", "containedInPlace": {"@type": "AdministrativeArea", "name": "Kiambu County"}},
+      {"@type": "City", "name": "Kiambu", "containedInPlace": {"@type": "AdministrativeArea", "name": "Kiambu County"}},
+      {"@type": "City", "name": "Kikuyu", "containedInPlace": {"@type": "AdministrativeArea", "name": "Kiambu County"}},
+      {"@type": "City", "name": "Athi River", "containedInPlace": {"@type": "AdministrativeArea", "name": "Machakos County"}},
+      {"@type": "City", "name": "Kangundo", "containedInPlace": {"@type": "AdministrativeArea", "name": "Machakos County"}},
+      {"@type": "City", "name": "Webuye", "containedInPlace": {"@type": "AdministrativeArea", "name": "Bungoma County"}},
+      {"@type": "City", "name": "Mumias", "containedInPlace": {"@type": "AdministrativeArea", "name": "Kakamega County"}},
+      {"@type": "City", "name": "Kanduyi", "containedInPlace": {"@type": "AdministrativeArea", "name": "Bungoma County"}},
+      {"@type": "City", "name": "Chuka", "containedInPlace": {"@type": "AdministrativeArea", "name": "Tharaka Nithi County"}},
+      {"@type": "City", "name": "Maralal", "containedInPlace": {"@type": "AdministrativeArea", "name": "Samburu County"}},
+      {"@type": "City", "name": "Iten", "containedInPlace": {"@type": "AdministrativeArea", "name": "Elgeyo-Marakwet County"}},
+      {"@type": "City", "name": "Kabarnet", "containedInPlace": {"@type": "AdministrativeArea", "name": "Baringo County"}},
+      {"@type": "City", "name": "Kapsabet", "containedInPlace": {"@type": "AdministrativeArea", "name": "Nandi County"}},
+      {"@type": "City", "name": "Keroka", "containedInPlace": {"@type": "AdministrativeArea", "name": "Nyamira County"}},
+      {"@type": "City", "name": "Awendo", "containedInPlace": {"@type": "AdministrativeArea", "name": "Migori County"}},
+      {"@type": "City", "name": "Rongo", "containedInPlace": {"@type": "AdministrativeArea", "name": "Migori County"}},
+      {"@type": "City", "name": "Siaya", "containedInPlace": {"@type": "AdministrativeArea", "name": "Siaya County"}},
+      {"@type": "City", "name": "Bondo", "containedInPlace": {"@type": "AdministrativeArea", "name": "Siaya County"}},
+      {"@type": "City", "name": "Ugunja", "containedInPlace": {"@type": "AdministrativeArea", "name": "Siaya County"}},
+      {"@type": "City", "name": "Mbita", "containedInPlace": {"@type": "AdministrativeArea", "name": "Homa Bay County"}},
+      {"@type": "City", "name": "Oyugis", "containedInPlace": {"@type": "AdministrativeArea", "name": "Homa Bay County"}},
+      {"@type": "City", "name": "Sotik", "containedInPlace": {"@type": "AdministrativeArea", "name": "Bomet County"}},
+      {"@type": "City", "name": "Litein", "containedInPlace": {"@type": "AdministrativeArea", "name": "Kericho County"}},
+      {"@type": "City", "name": "Kapsowar", "containedInPlace": {"@type": "AdministrativeArea", "name": "Elgeyo-Marakwet County"}},
+      {"@type": "City", "name": "Molo", "containedInPlace": {"@type": "AdministrativeArea", "name": "Nakuru County"}},
+      {"@type": "City", "name": "Njoro", "containedInPlace": {"@type": "AdministrativeArea", "name": "Nakuru County"}},
+      {"@type": "City", "name": "Gilgil", "containedInPlace": {"@type": "AdministrativeArea", "name": "Nakuru County"}},
+      {"@type": "City", "name": "Ol Kalou", "containedInPlace": {"@type": "AdministrativeArea", "name": "Nyandarua County"}},
+      {"@type": "City", "name": "Nyahururu", "containedInPlace": {"@type": "AdministrativeArea", "name": "Laikipia County"}},
+      {"@type": "City", "name": "Rumuruti", "containedInPlace": {"@type": "AdministrativeArea", "name": "Laikipia County"}},
+      {"@type": "City", "name": "Maragua", "containedInPlace": {"@type": "AdministrativeArea", "name": "Murang'a County"}},
+      {"@type": "City", "name": "Kangema", "containedInPlace": {"@type": "AdministrativeArea", "name": "Murang'a County"}},
+      {"@type": "City", "name": "Sagana", "containedInPlace": {"@type": "AdministrativeArea", "name": "Kirinyaga County"}},
+      {"@type": "City", "name": "Wanguru", "containedInPlace": {"@type": "AdministrativeArea", "name": "Kirinyaga County"}},
+      {"@type": "City", "name": "Mwingi", "containedInPlace": {"@type": "AdministrativeArea", "name": "Kitui County"}},
+      {"@type": "City", "name": "Mutomo", "containedInPlace": {"@type": "AdministrativeArea", "name": "Kitui County"}},
+      {"@type": "City", "name": "Kathonzweni", "containedInPlace": {"@type": "AdministrativeArea", "name": "Makueni County"}},
+      {"@type": "City", "name": "Wote", "containedInPlace": {"@type": "AdministrativeArea", "name": "Makueni County"}},
+      {"@type": "City", "name": "Mwatate", "containedInPlace": {"@type": "AdministrativeArea", "name": "Taita Taveta County"}},
+      {"@type": "City", "name": "Taveta", "containedInPlace": {"@type": "AdministrativeArea", "name": "Taita Taveta County"}},
+      {"@type": "City", "name": "Diani", "containedInPlace": {"@type": "AdministrativeArea", "name": "Kwale County"}},
+      {"@type": "City", "name": "Ukunda", "containedInPlace": {"@type": "AdministrativeArea", "name": "Kwale County"}},
+      {"@type": "City", "name": "Msambweni", "containedInPlace": {"@type": "AdministrativeArea", "name": "Kwale County"}},
+      {"@type": "City", "name": "Lungalunga", "containedInPlace": {"@type": "AdministrativeArea", "name": "Kwale County"}},
+      {"@type": "City", "name": "Mariakani", "containedInPlace": {"@type": "AdministrativeArea", "name": "Kilifi County"}},
+      {"@type": "City", "name": "Kilifi", "containedInPlace": {"@type": "AdministrativeArea", "name": "Kilifi County"}},
+      {"@type": "City", "name": "Watamu", "containedInPlace": {"@type": "AdministrativeArea", "name": "Kilifi County"}},
+      {"@type": "City", "name": "Mtwapa", "containedInPlace": {"@type": "AdministrativeArea", "name": "Kilifi County"}},
+      {"@type": "City", "name": "Moyale", "containedInPlace": {"@type": "AdministrativeArea", "name": "Marsabit County"}},
+      {"@type": "City", "name": "Laisamis", "containedInPlace": {"@type": "AdministrativeArea", "name": "Marsabit County"}},
+      {"@type": "City", "name": "Hola", "containedInPlace": {"@type": "AdministrativeArea", "name": "Tana River County"}},
+      {"@type": "City", "name": "Garsen", "containedInPlace": {"@type": "AdministrativeArea", "name": "Tana River County"}},
+      {"@type": "City", "name": "Bura", "containedInPlace": {"@type": "AdministrativeArea", "name": "Tana River County"}},
+      {"@type": "City", "name": "Modogashe", "containedInPlace": {"@type": "AdministrativeArea", "name": "Garissa County"}},
+      {"@type": "City", "name": "Dadaab", "containedInPlace": {"@type": "AdministrativeArea", "name": "Garissa County"}},
+      {"@type": "City", "name": "Fafi", "containedInPlace": {"@type": "AdministrativeArea", "name": "Garissa County"}},
+      {"@type": "City", "name": "Liboi", "containedInPlace": {"@type": "AdministrativeArea", "name": "Garissa County"}},
+      {"@type": "City", "name": "Witu", "containedInPlace": {"@type": "AdministrativeArea", "name": "Lamu County"}},
+      {"@type": "City", "name": "Faza", "containedInPlace": {"@type": "AdministrativeArea", "name": "Lamu County"}},
+      {"@type": "City", "name": "Lodwar", "containedInPlace": {"@type": "AdministrativeArea", "name": "Turkana County"}},
+      {"@type": "City", "name": "Kakuma", "containedInPlace": {"@type": "AdministrativeArea", "name": "Turkana County"}},
+      {"@type": "City", "name": "Lokichogio", "containedInPlace": {"@type": "AdministrativeArea", "name": "Turkana County"}},
+      {"@type": "City", "name": "Lokichar", "containedInPlace": {"@type": "AdministrativeArea", "name": "Turkana County"}},
+      {"@type": "City", "name": "Kapenguria", "containedInPlace": {"@type": "AdministrativeArea", "name": "West Pokot County"}},
+      {"@type": "City", "name": "Sigor", "containedInPlace": {"@type": "AdministrativeArea", "name": "West Pokot County"}},
+      {"@type": "City", "name": "Kacheliba", "containedInPlace": {"@type": "AdministrativeArea", "name": "West Pokot County"}},
+      {"@type": "City", "name": "Kainuk", "containedInPlace": {"@type": "AdministrativeArea", "name": "Turkana County"}},
+      {"@type": "City", "name": "Katilu", "containedInPlace": {"@type": "AdministrativeArea", "name": "Turkana County"}},
+      {"@type": "City", "name": "Lokori", "containedInPlace": {"@type": "AdministrativeArea", "name": "Turkana County"}},
+      {"@type": "City", "name": "Kibish", "containedInPlace": {"@type": "AdministrativeArea", "name": "Turkana County"}},
+
+      /* ========== KMTC CAMPUSES (40+) ========== */
+      {
+        "@type": "EducationalOrganization",
+        "name": "Kenya Medical Training College",
+        "description": "KMTC trains health professionals across Kenya",
+        "hasCampuses": [
+          {"@type": "CollegeOrUniversity", "name": "KMTC Nairobi", "address": {"@type": "PostalAddress", "addressLocality": "Nairobi"}},
+          {"@type": "CollegeOrUniversity", "name": "KMTC Mombasa", "address": {"@type": "PostalAddress", "addressLocality": "Mombasa"}},
+          {"@type": "CollegeOrUniversity", "name": "KMTC Kisumu", "address": {"@type": "PostalAddress", "addressLocality": "Kisumu"}},
+          {"@type": "CollegeOrUniversity", "name": "KMTC Nakuru", "address": {"@type": "PostalAddress", "addressLocality": "Nakuru"}},
+          {"@type": "CollegeOrUniversity", "name": "KMTC Eldoret", "address": {"@type": "PostalAddress", "addressLocality": "Eldoret"}},
+          {"@type": "CollegeOrUniversity", "name": "KMTC Meru", "address": {"@type": "PostalAddress", "addressLocality": "Meru"}},
+          {"@type": "CollegeOrUniversity", "name": "KMTC Kakamega", "address": {"@type": "PostalAddress", "addressLocality": "Kakamega"}},
+          {"@type": "CollegeOrUniversity", "name": "KMTC Nyeri", "address": {"@type": "PostalAddress", "addressLocality": "Nyeri"}},
+          {"@type": "CollegeOrUniversity", "name": "KMTC Embu", "address": {"@type": "PostalAddress", "addressLocality": "Embu"}},
+          {"@type": "CollegeOrUniversity", "name": "KMTC Bomet", "address": {"@type": "PostalAddress", "addressLocality": "Bomet"}},
+          {"@type": "CollegeOrUniversity", "name": "KMTC Kapenguria", "address": {"@type": "PostalAddress", "addressLocality": "Kapenguria"}},
+          {"@type": "CollegeOrUniversity", "name": "KMTC Kilifi", "address": {"@type": "PostalAddress", "addressLocality": "Kilifi"}},
+          {"@type": "CollegeOrUniversity", "name": "KMTC Garissa", "address": {"@type": "PostalAddress", "addressLocality": "Garissa"}},
+          {"@type": "CollegeOrUniversity", "name": "KMTC Lodwar", "address": {"@type": "PostalAddress", "addressLocality": "Lodwar"}},
+          {"@type": "CollegeOrUniversity", "name": "KMTC Kabarnet", "address": {"@type": "PostalAddress", "addressLocality": "Kabarnet"}},
+          {"@type": "CollegeOrUniversity", "name": "KMTC Kitui", "address": {"@type": "PostalAddress", "addressLocality": "Kitui"}},
+          {"@type": "CollegeOrUniversity", "name": "KMTC Machakos", "address": {"@type": "PostalAddress", "addressLocality": "Machakos"}},
+          {"@type": "CollegeOrUniversity", "name": "KMTC Thika", "address": {"@type": "PostalAddress", "addressLocality": "Thika"}},
+          {"@type": "CollegeOrUniversity", "name": "KMTC Murang'a", "address": {"@type": "PostalAddress", "addressLocality": "Murang'a"}},
+          {"@type": "CollegeOrUniversity", "name": "KMTC Kisii", "address": {"@type": "PostalAddress", "addressLocality": "Kisii"}},
+          {"@type": "CollegeOrUniversity", "name": "KMTC Kericho", "address": {"@type": "PostalAddress", "addressLocality": "Kericho"}},
+          {"@type": "CollegeOrUniversity", "name": "KMTC Bungoma", "address": {"@type": "PostalAddress", "addressLocality": "Bungoma"}},
+          {"@type": "CollegeOrUniversity", "name": "KMTC Voi", "address": {"@type": "PostalAddress", "addressLocality": "Voi"}},
+          {"@type": "CollegeOrUniversity", "name": "KMTC Lamu", "address": {"@type": "PostalAddress", "addressLocality": "Lamu"}},
+          {"@type": "CollegeOrUniversity", "name": "KMTC Marsabit", "address": {"@type": "PostalAddress", "addressLocality": "Marsabit"}},
+          {"@type": "CollegeOrUniversity", "name": "KMTC Wajir", "address": {"@type": "PostalAddress", "addressLocality": "Wajir"}},
+          {"@type": "CollegeOrUniversity", "name": "KMTC Mandera", "address": {"@type": "PostalAddress", "addressLocality": "Mandera"}},
+          {"@type": "CollegeOrUniversity", "name": "KMTC Nyahururu", "address": {"@type": "PostalAddress", "addressLocality": "Nyahururu"}},
+          {"@type": "CollegeOrUniversity", "name": "KMTC Malindi", "address": {"@type": "PostalAddress", "addressLocality": "Malindi"}},
+          {"@type": "CollegeOrUniversity", "name": "KMTC Homa Bay", "address": {"@type": "PostalAddress", "addressLocality": "Homa Bay"}},
+          {"@type": "CollegeOrUniversity", "name": "KMTC Busia", "address": {"@type": "PostalAddress", "addressLocality": "Busia"}},
+          {"@type": "CollegeOrUniversity", "name": "KMTC Siaya", "address": {"@type": "PostalAddress", "addressLocality": "Siaya"}},
+          {"@type": "CollegeOrUniversity", "name": "KMTC Migori", "address": {"@type": "PostalAddress", "addressLocality": "Migori"}},
+          {"@type": "CollegeOrUniversity", "name": "KMTC Narok", "address": {"@type": "PostalAddress", "addressLocality": "Narok"}},
+          {"@type": "CollegeOrUniversity", "name": "KMTC Kapsabet", "address": {"@type": "PostalAddress", "addressLocality": "Kapsabet"}},
+          {"@type": "CollegeOrUniversity", "name": "KMTC Iten", "address": {"@type": "PostalAddress", "addressLocality": "Iten"}},
+          {"@type": "CollegeOrUniversity", "name": "KMTC Maralal", "address": {"@type": "PostalAddress", "addressLocality": "Maralal"}},
+          {"@type": "CollegeOrUniversity", "name": "KMTC Isiolo", "address": {"@type": "PostalAddress", "addressLocality": "Isiolo"}},
+          {"@type": "CollegeOrUniversity", "name": "KMTC Taveta", "address": {"@type": "PostalAddress", "addressLocality": "Taveta"}},
+          {"@type": "CollegeOrUniversity", "name": "KMTC Loitokitok", "address": {"@type": "PostalAddress", "addressLocality": "Loitokitok"}}
+        ]
+      },
+
+      /* ========== UNIVERSITIES (50+) ========== */
+      {
+        "@type": "EducationalOrganization",
+        "name": "Universities in Kenya",
+        "description": "Higher education institutions across Kenya",
+        "hasOfferings": [
+          {"@type": "CollegeOrUniversity", "name": "University of Nairobi", "url": "https://www.uonbi.ac.ke"},
+          {"@type": "CollegeOrUniversity", "name": "Kenyatta University", "url": "https://www.ku.ac.ke"},
+          {"@type": "CollegeOrUniversity", "name": "Moi University", "url": "https://www.mu.ac.ke"},
+          {"@type": "CollegeOrUniversity", "name": "Jomo Kenyatta University of Agriculture and Technology", "url": "https://www.jkuat.ac.ke"},
+          {"@type": "CollegeOrUniversity", "name": "Maseno University", "url": "https://www.maseno.ac.ke"},
+          {"@type": "CollegeOrUniversity", "name": "Egerton University", "url": "https://www.egerton.ac.ke"},
+          {"@type": "CollegeOrUniversity", "name": "Technical University of Kenya", "url": "https://www.tukenya.ac.ke"},
+          {"@type": "CollegeOrUniversity", "name": "Technical University of Mombasa", "url": "https://www.tum.ac.ke"},
+          {"@type": "CollegeOrUniversity", "name": "Dedan Kimathi University of Technology", "url": "https://www.dkut.ac.ke"},
+          {"@type": "CollegeOrUniversity", "name": "Masinde Muliro University of Science and Technology", "url": "https://www.mmust.ac.ke"},
+          {"@type": "CollegeOrUniversity", "name": "Murang'a University of Technology", "url": "https://www.mut.ac.ke"},
+          {"@type": "CollegeOrUniversity", "name": "Meru University of Science and Technology", "url": "https://www.must.ac.ke"},
+          {"@type": "CollegeOrUniversity", "name": "Kibabii University", "url": "https://www.kibu.ac.ke"},
+          {"@type": "CollegeOrUniversity", "name": "Karatina University", "url": "https://www.karu.ac.ke"},
+          {"@type": "CollegeOrUniversity", "name": "University of Eldoret", "url": "https://www.uoeld.ac.ke"},
+          {"@type": "CollegeOrUniversity", "name": "Laikipia University", "url": "https://www.laikipia.ac.ke"},
+          {"@type": "CollegeOrUniversity", "name": "South Eastern Kenya University", "url": "https://www.seku.ac.ke"},
+          {"@type": "CollegeOrUniversity", "name": "Maasai Mara University", "url": "https://www.mmarau.ac.ke"},
+          {"@type": "CollegeOrUniversity", "name": "Multimedia University of Kenya", "url": "https://www.mmu.ac.ke"},
+          {"@type": "CollegeOrUniversity", "name": "Pwani University", "url": "https://www.pu.ac.ke"},
+          {"@type": "CollegeOrUniversity", "name": "Kisii University", "url": "https://www.kisiiuniversity.ac.ke"},
+          {"@type": "CollegeOrUniversity", "name": "Rongo University", "url": "https://www.rongovarsity.ac.ke"},
+          {"@type": "CollegeOrUniversity", "name": "Cooperative University of Kenya", "url": "https://www.cuk.ac.ke"},
+          {"@type": "CollegeOrUniversity", "name": "Machakos University", "url": "https://www.mksu.ac.ke"},
+          {"@type": "CollegeOrUniversity", "name": "Kirinyaga University", "url": "https://www.kyu.ac.ke"},
+          {"@type": "CollegeOrUniversity", "name": "Taita Taveta University", "url": "https://www.ttu.ac.ke"},
+          {"@type": "CollegeOrUniversity", "name": "Chuka University", "url": "https://www.chuka.ac.ke"},
+          {"@type": "CollegeOrUniversity", "name": "Daystar University", "url": "https://www.daystar.ac.ke"},
+          {"@type": "CollegeOrUniversity", "name": "Strathmore University", "url": "https://www.strathmore.edu"},
+          {"@type": "CollegeOrUniversity", "name": "United States International University Africa", "url": "https://www.usiu.ac.ke"},
+          {"@type": "CollegeOrUniversity", "name": "Catholic University of Eastern Africa", "url": "https://www.cuea.edu"},
+          {"@type": "CollegeOrUniversity", "name": "Africa Nazarene University", "url": "https://www.anu.ac.ke"},
+          {"@type": "CollegeOrUniversity", "name": "KCA University", "url": "https://www.kca.ac.ke"},
+          {"@type": "CollegeOrUniversity", "name": "Mount Kenya University", "url": "https://www.mku.ac.ke"},
+          {"@type": "CollegeOrUniversity", "name": "Kabarak University", "url": "https://www.kabarak.ac.ke"},
+          {"@type": "CollegeOrUniversity", "name": "Scott Christian University", "url": "https://www.scott.ac.ke"},
+          {"@type": "CollegeOrUniversity", "name": "St. Paul's University", "url": "https://www.spu.ac.ke"},
+          {"@type": "CollegeOrUniversity", "name": "Zetech University", "url": "https://www.zetech.ac.ke"},
+          {"@type": "CollegeOrUniversity", "name": "Presbyterian University of East Africa", "url": "https://www.puea.ac.ke"},
+          {"@type": "CollegeOrUniversity", "name": "Gretsa University", "url": "https://www.gretsauniversity.ac.ke"},
+          {"@type": "CollegeOrUniversity", "name": "Riara University", "url": "https://www.riarauniversity.ac.ke"},
+          {"@type": "CollegeOrUniversity", "name": "Amref International University", "url": "https://www.amref.ac.ke"},
+          {"@type": "CollegeOrUniversity", "name": "UMMA University", "url": "https://www.umma.ac.ke"},
+          {"@type": "CollegeOrUniversity", "name": "Adventist University of Africa", "url": "https://www.aua.ac.ke"},
+          {"@type": "CollegeOrUniversity", "name": "Great Lakes University of Kisumu", "url": "https://www.gluk.ac.ke"},
+          {"@type": "CollegeOrUniversity", "name": "Pan Africa Christian University", "url": "https://www.pacuniversity.ac.ke"},
+          {"@type": "CollegeOrUniversity", "name": "Kenya Methodist University", "url": "https://www.kemu.ac.ke"},
+          {"@type": "CollegeOrUniversity", "name": "University of Kabianga", "url": "https://www.kabianga.ac.ke"},
+          {"@type": "CollegeOrUniversity", "name": "Tom Mboya University College", "url": "https://www.tmuc.ac.ke"},
+          {"@type": "CollegeOrUniversity", "name": "Alupe University College", "url": "https://www.alupe.ac.ke"}
+        ]
+      },
+
+      /* ========== TVET INSTITUTIONS (30+) ========== */
+      {
+        "@type": "EducationalOrganization",
+        "name": "Technical and Vocational Education and Training (TVET) Institutions",
+        "description": "National polytechnics and technical colleges in Kenya",
+        "hasOfferings": [
+          {"@type": "CollegeOrUniversity", "name": "The Kenya Polytechnic (Nairobi Technical Training Institute)", "url": "https://www.kenyapoly.ac.ke"},
+          {"@type": "CollegeOrUniversity", "name": "Kabete National Polytechnic", "url": "https://www.kabetepoly.ac.ke"},
+          {"@type": "CollegeOrUniversity", "name": "Eldoret National Polytechnic", "url": "https://www.eldoretpoly.ac.ke"},
+          {"@type": "CollegeOrUniversity", "name": "Kisumu National Polytechnic", "url": "https://www.kisumupoly.ac.ke"},
+          {"@type": "CollegeOrUniversity", "name": "Mombasa Technical Training Institute", "url": "https://www.mombasapoly.ac.ke"},
+          {"@type": "CollegeOrUniversity", "name": "Meru National Polytechnic", "url": "https://www.merupoly.ac.ke"},
+          {"@type": "CollegeOrUniversity", "name": "Nyeri Technical Training Institute", "url": "https://www.nyeripoly.ac.ke"},
+          {"@type": "CollegeOrUniversity", "name": "Rift Valley Technical Training Institute", "url": "https://www.rvtti.ac.ke"},
+          {"@type": "CollegeOrUniversity", "name": "Coast Institute of Technology", "url": "https://www.cit.ac.ke"},
+          {"@type": "CollegeOrUniversity", "name": "Kiambu Institute of Science and Technology", "url": "https://www.kist.ac.ke"},
+          {"@type": "CollegeOrUniversity", "name": "Kitale National Polytechnic", "url": "https://www.kitalepoly.ac.ke"},
+          {"@type": "CollegeOrUniversity", "name": "Sigalagala National Polytechnic", "url": "https://www.sigalagalapoly.ac.ke"},
+          {"@type": "CollegeOrUniversity", "name": "Nyandarua Institute of Science and Technology", "url": "https://www.nist.ac.ke"},
+          {"@type": "CollegeOrUniversity", "name": "Mawego Technical Training Institute", "url": "https://www.mawegotech.ac.ke"},
+          {"@type": "CollegeOrUniversity", "name": "Kipkabus Technical Training Institute", "url": "https://www.kipkabusti.ac.ke"},
+          {"@type": "CollegeOrUniversity", "name": "Baringo Technical College", "url": "https://www.baringotech.ac.ke"},
+          {"@type": "CollegeOrUniversity", "name": "Eldoret Aviation Training Institute", "url": "https://www.eati.ac.ke"},
+          {"@type": "CollegeOrUniversity", "name": "Thika Technical Training Institute", "url": "https://www.thikati.ac.ke"},
+          {"@type": "CollegeOrUniversity", "name": "Machakos Technical Institute for the Blind", "url": "https://www.machakostib.ac.ke"},
+          {"@type": "CollegeOrUniversity", "name": "Kericho Technical Training Institute", "url": "https://www.kerichoti.ac.ke"},
+          {"@type": "CollegeOrUniversity", "name": "Kaiboi Technical Training Institute", "url": "https://www.kaiboiti.ac.ke"},
+          {"@type": "CollegeOrUniversity", "name": "Nakuru Training Institute", "url": "https://www.nakuruti.ac.ke"},
+          {"@type": "CollegeOrUniversity", "name": "Karen Technical Training Institute for the Deaf", "url": "https://www.karenti.ac.ke"},
+          {"@type": "CollegeOrUniversity", "name": "Kangundo Technical and Vocational College", "url": "https://www.kangundotvc.ac.ke"},
+          {"@type": "CollegeOrUniversity", "name": "Mathenge Technical Training Institute", "url": "https://www.mathengeti.ac.ke"},
+          {"@type": "CollegeOrUniversity", "name": "Masinga Technical and Vocational College", "url": "https://www.masingatvc.ac.ke"},
+          {"@type": "CollegeOrUniversity", "name": "Mwatate Technical and Vocational College", "url": "https://www.mwatatetvc.ac.ke"},
+          {"@type": "CollegeOrUniversity", "name": "Wote Technical Training Institute", "url": "https://www.woteti.ac.ke"},
+          {"@type": "CollegeOrUniversity", "name": "Baricho Technical Training Institute", "url": "https://www.barichoti.ac.ke"},
+          {"@type": "CollegeOrUniversity", "name": "Shamberere Technical Training Institute", "url": "https://www.shamberereti.ac.ke"},
+          {"@type": "CollegeOrUniversity", "name": "Bukura Agricultural College", "url": "https://www.bukura.ac.ke"},
+          {"@type": "CollegeOrUniversity", "name": "Ramogi Institute of Advanced Technology", "url": "https://www.riat.ac.ke"},
+          {"@type": "CollegeOrUniversity", "name": "Sang'alo Institute of Science and Technology", "url": "https://www.sangalotech.ac.ke"},
+          {"@type": "CollegeOrUniversity", "name": "Kisiwa Technical Training Institute", "url": "https://www.kisiwati.ac.ke"},
+          {"@type": "CollegeOrUniversity", "name": "Kaimosi Friends Technical Training Institute", "url": "https://www.kaimositi.ac.ke"},
+          {"@type": "CollegeOrUniversity", "name": "Katilu Technical and Vocational College", "url": "https://www.katilutvc.ac.ke"},
+          {"@type": "CollegeOrUniversity", "name": "Marianist Technical Training Institute", "url": "https://www.marianistti.ac.ke"},
+          {"@type": "CollegeOrUniversity", "name": "Mumias Technical Training Institute", "url": "https://www.mumiasti.ac.ke"},
+          {"@type": "CollegeOrUniversity", "name": "Nkabune Technical Training Institute", "url": "https://www.nkabuneti.ac.ke"},
+          {"@type": "CollegeOrUniversity", "name": "Rift Valley Institute of Science and Technology", "url": "https://www.rvist.ac.ke"}
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <!-- Initial State for Vue (Hidden) -->
+  <script id="__SEO_STATE__" type="application/json">
+  {
+    "regions": ["Nairobi", "Mombasa", "Kisumu", "Nakuru", "Eldoret", "Thika", "Machakos", "Kiambu", "Nyeri", "Meru", "Kakamega", "Kisii", "Kericho", "Bungoma", "Uasin Gishu", "Kilifi", "Garissa", "Lamu", "Kitui", "Kajiado", "Narok", "Makueni", "Wajir", "Marsabit", "Isiolo", "Nandi", "Homa Bay", "Migori", "Siaya", "Busia", "Embu", "Kirinyaga", "Murang'a", "Nyandarua", "Nyamira", "Samburu", "Taita Taveta", "Tana River", "Trans Nzoia", "Turkana", "West Pokot", "Baringo", "Elgeyo-Marakwet", "Laikipia", "Nandi", "Vihiga", "Bomet"],
+    "categories": ["Single Room", "Bedsitter", "Student Housing", "1 Bedroom", "2 Bedroom", "3 Bedroom", "Vacation Rental", "Farmhouse", "Commercial Plot", "Agricultural Land"]
+  }
+  </script>
+
+  <!-- Main Scripts -->
+  <script src="https://js.paystack.co/v1/inline.js" defer></script>
+  <script type="module" src="/src/main.js" defer></script>
+</head>
+
+<body>
+  <div id="app"></div>
+  
+  <!-- SEO Content (Hidden with multiple techniques) -->
+  <div style="display:none; visibility:hidden; height:0; width:0; overflow:hidden;" aria-hidden="true">
+    <h1>Kenya Property Listings - All Regions</h1>
+    <h2>Urban Properties</h2>
+    <ul>
+      <li>Nairobi: Apartments in Kilimani, Kileleshwa, Roysambu</li>
+      <li>Mombasa: Beachfront villas in Nyali, Shanzu</li>
+      <li>Kisumu: Lakeside apartments in Milimani, Lolwe</li>
+    </ul>
+    
+    <h2>Rural Properties</h2>
+    <ul>
+      <li>Central Kenya: Farmland in Nyeri, Murang'a</li>
+      <li>Rift Valley: Maasai Mara conservancies</li>
+      <li>Western Kenya: Sugar belt land in Kakamega</li>
+    </ul>
+    
+    <p>Search terms: cheap rural houses Kenya, upcountry land for sale, affordable Nairobi bedsitters, student rooms near universities, Mombasa short-term rentals</p>
+  </div>
+</body>
+</html>
